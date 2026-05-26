@@ -17,6 +17,10 @@
     echo "<p>Mesaj: " . $message . "</p>";
 
 ?>
+<script>
+    
+    console.log("<?php echo $message; ?>");
+</script>
 
 </body>
 </html>
