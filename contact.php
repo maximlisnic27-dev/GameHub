@@ -106,7 +106,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </div>
 </div>
 
-<?= footerHtml() ?>
 <script src="js/script.js"></script>
 </body>
 </html>
