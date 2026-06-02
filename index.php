@@ -31,9 +31,7 @@ $user = currentUser();
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════
-     NAVBAR
-═══════════════════════════════════════ -->
+
 <nav class="navbar">
   <a href="index.php" class="navbar-brand">
     <span class="brand-icon">🎮</span>
@@ -72,7 +70,7 @@ $user = currentUser();
   </div>
 </nav>
 
-<!-- Meniu mobil -->
+
 <div class="mobile-menu" id="mobileMenu">
   <a href="index.php"          data-i18n="nav_home">Acasă</a>
   <a href="index.php#about"    data-i18n="nav_about">Despre</a>
@@ -88,9 +86,7 @@ $user = currentUser();
 </div>
 
 
-<!-- ═══════════════════════════════════════
-     HERO
-═══════════════════════════════════════ -->
+
 <section class="hero">
   <div class="hero-bg"></div>
 
