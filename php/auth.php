@@ -9,7 +9,16 @@ function readJson(string $file): array {
     return json_decode(file_get_contents($file), true) ?? [];
 }
 function writeJson(string $file, array $data): bool {
-    return file_put_contents($file, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)) !== false;
+    $dir = dirname($file);
+
+    if (!is_dir($dir)) {
+        mkdir($dir, 0777, true);
+    }
+
+    return file_put_contents(
+        $file,
+        json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
+    ) !== false;
 }
 
 function getUsers(): array { return readJson(USERS_FILE); }
@@ -33,8 +42,11 @@ function registerUser(string $name, string $email, string $password): array {
         'password'   => password_hash($password, PASSWORD_DEFAULT),
         'created_at' => date('Y-m-d H:i:s'),
     ];
-    writeJson(USERS_FILE, $users);
-    return ['ok'=>true,'msg'=>'Cont creat! Autentifică-te.'];
+ $result = writeJson(USERS_FILE, $users);
+
+var_dump($result);
+var_dump(USERS_FILE);
+exit;
 }
 
 function loginUser(string $email, string $password): array {

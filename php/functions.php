@@ -3,12 +3,16 @@
 
 
 function currentUser(): ?array {
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
+    if (!isset($_SESSION['user_id'])) {
+        return null;
     }
-    return $_SESSION['user'] ?? null;
-}
 
+    return [
+        'id' => $_SESSION['user_id'],
+        'name' => $_SESSION['user_name'],
+        'email' => $_SESSION['user_email']
+    ];
+}
 function alert(string $msg, string $type = 'info'): string {
     $icons = ['success' => '✓', 'error' => '✕', 'info' => '>'];
     $icon  = $icons[$type] ?? '>';
