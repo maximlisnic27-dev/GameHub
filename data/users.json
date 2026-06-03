@@ -5,5 +5,12 @@
         "email": "macszzzzzzz@gmail.com",
         "password": "$2y$10$eTESmaS8Yczt6DXYBzhsZefxiex0saSgYpMLuTIKSVVTwy0PnBXYm",
         "created_at": "2026-06-02 10:56:08"
+    },
+    {
+        "id": "u_6a1fbf4f6bdbd5.45568456",
+        "name": "Maxim Lisnic",
+        "email": "maximlisnic27@gmail.com",
+        "password": "$2y$10$OjnZm.rmoAQ33fDPM27b.urEL8Oz1OibLCaFZCs17FDDQgYfnFP3i",
+        "created_at": "2026-06-03 07:44:47"
     }
 ]
