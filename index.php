@@ -106,7 +106,7 @@ $user = currentUser();
 
     <div class="hero-cta">
       <?php if ($user): ?>
-        <a href="dashboard.php" class="btn btn-primary">Colecția mea →</a>
+        <a href="dashboard.php" class="btn btn-primary" data-i18n="hero_my_collection">Colecția mea →</a>
       <?php else: ?>
         <a href="register.php" class="btn btn-primary" data-i18n="hero_start">Start Game</a>
         <a href="login.php"    class="btn btn-ghost"   data-i18n="hero_demo">Explorează</a>
@@ -121,8 +121,8 @@ $user = currentUser();
   <div class="container">
     <span class="section-label" data-i18n="nav_about">// about</span>
     <div class="divider"></div>
-    <h2>What is GameVault?</h2>
-    <p class="about-text">
+    <h2 data-i18n="about_title">What is GameVault?</h2>
+    <p class="about-text" data-i18n="about_text">
       GameVault is your personal game tracking companion. Organize your collection,
       log hours played, track status per title, and leave personal reviews —
       all stored locally in JSON files. No cloud, no database, just yours.
@@ -134,32 +134,27 @@ $user = currentUser();
 
 <section class="section section-features" id="features">
   <div class="container">
-    <span class="section-label">// features</span>
-    <h2>Everything you need</h2>
+    <span class="section-label" data-i18n="label_features">// features</span>
+    <h2 data-i18n="features_title">Everything you need</h2>
 
     <div class="features-grid">
 
       <?php
+      // MODIFICAT: Am adăugat chei unice în array (f_card1_title, f_card1_desc etc.) ca să le mapăm automat în HTML
       $features = [
-        ['🎮', 'Personal Collection',
-         'Add any game with title, platform, genre, and your own rating.'],
-        ['📊', 'Status Tracking',
-         'Mark games as Playing, Completed, Backlog, or Dropped.'],
-        ['⏱️', 'Playtime Logging',
-         'Keep track of how many hours you invest in your gaming stats.'],
-        ['⭐', 'Rating System',
-         'Rate each game 1–5 stars and write a short personal review.'],
-        ['🌙', 'Dark / Light Mode',
-         'UI optimized for both late-night sessions and daylight.'],
-        ['📱', 'Fully Responsive',
-         'Works seamlessly on PC, tablet and mobile.'],
+        ['🎮', 'f_card1_title', 'f_card1_desc', 'Personal Collection', 'Add any game with title, platform, genre, and your own rating.'],
+        ['📊', 'f_card2_title', 'f_card2_desc', 'Status Tracking', 'Mark games as Playing, Completed, Backlog, or Dropped.'],
+        ['⏱️', 'f_card3_title', 'f_card3_desc', 'Playtime Logging', 'Keep track of how many hours you invest in your gaming stats.'],
+        ['⭐', 'f_card4_title', 'f_card4_desc', 'Rating System', 'Rate each game 1–5 stars and write a short personal review.'],
+        ['🌙', 'f_card5_title', 'f_card5_desc', 'Dark / Light Mode', 'UI optimized for both late-night sessions and daylight.'],
+        ['📱', 'f_card6_title', 'f_card6_desc', 'Fully Responsive', 'Works seamlessly on PC, tablet and mobile.'],
       ];
-      foreach ($features as $i => [$icon, $title, $desc]):
+      foreach ($features as $i => [$icon, $titleKey, $descKey, $defaultTitle, $defaultDesc]):
       ?>
       <div class="feature-card" style="animation-delay:<?= $i * 80 ?>ms">
         <span class="feature-icon"><?= $icon ?></span>
-        <h3 class="feature-title"><?= $title ?></h3>
-        <p class="feature-desc"><?= $desc ?></p>
+        <h3 class="feature-title" data-i18n="<?= $titleKey ?>"><?= $defaultTitle ?></h3>
+        <p class="feature-desc" data-i18n="<?= $descKey ?>"><?= $defaultDesc ?></p>
       </div>
       <?php endforeach; ?>
 
@@ -171,15 +166,15 @@ $user = currentUser();
 
 <section class="section section-cta">
   <div class="container cta-inner">
-    <span class="section-label">// ready?</span>
-    <h2>Ready <span class="text-gradient">Player</span> One?</h2>
-    <p class="cta-sub">
+    <span class="section-label" data-i18n="label_ready">// ready?</span>
+    <h2 data-i18n="cta_title">Ready <span class="text-gradient">Player</span> One?</h2>
+    <p class="cta-sub" data-i18n="cta_sub">
       Create your account and add your first game in under 60 seconds.
     </p>
     <?php if ($user): ?>
-      <a href="dashboard.php" class="btn btn-primary btn-lg">OPEN VAULT →</a>
+      <a href="dashboard.php" class="btn btn-primary btn-lg" data-i18n="cta_open_vault">OPEN VAULT →</a>
     <?php else: ?>
-      <a href="register.php"  class="btn btn-primary btn-lg" data-i18n="hero_start">CREATE ACCOUNT →</a>
+      <a href="register.php"  class="btn btn-primary btn-lg" data-i18n="cta_create_account">CREATE ACCOUNT →</a>
     <?php endif; ?>
   </div>
 </section>
