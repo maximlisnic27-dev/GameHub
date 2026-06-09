@@ -19,7 +19,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (strlen($subject) < 3)                       $errors[] = 'Subiectul e obligatoriu.';
     if (strlen($message) < 10)                      $errors[] = 'Mesajul e prea scurt.';
     if ($errors) $alertHtml = alert(implode(' | ', $errors), 'error');
-    else { $alertHtml = alert('Mesaj transmis. Te contactăm în curând!', 'success'); $sent = true; }
+   else {
+    $newMessage = [
+        'id'         => uniqid('msg_', true),
+        'name'       => $name,
+        'email'      => $email,
+        'subject'    => $subject,
+        'message'    => $message,
+        'created_at' => date('Y-m-d H:i:s'),
+    ];
+    $file = __DIR__ . '/data/messages.json';
+    $messages = file_exists($file)
+        ? (json_decode(file_get_contents($file), true) ?? [])
+        : [];
+    $messages[] = $newMessage;
+    file_put_contents($file, json_encode($messages, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+    $alertHtml = alert('Mesaj transmis. Te contactăm în curând!', 'success');
+    $sent = true;
+}
 }
 ?>
 
